@@ -30,7 +30,7 @@ flags = tf.app.flags
 FLAGS = flags.FLAGS
 flags.DEFINE_boolean('fake_data', False, 'If true, uses fake data '
                      'for unit testing.')
-flags.DEFINE_integer('max_steps', 1000, 'Number of steps to run trainer.')
+flags.DEFINE_integer('max_steps', 5000, 'Number of steps to run trainer.')
 flags.DEFINE_float('learning_rate', 0.001, 'Initial learning rate.')
 flags.DEFINE_float('dropout', 0.9, 'Keep probability for training dropout.')
 flags.DEFINE_string('data_dir', '/tmp/data', 'Directory for storing data')
@@ -102,13 +102,18 @@ def train():
       return activations
 
   hidden1 = nn_layer(x, 784, 500, 'layer1')
+  
+# experiment
+  hidden2 = nn_layer(hidden1, 500, 300, 'layer2')
+  hidden3 = nn_layer(hidden2, 300, 100, 'layer3')
 
   with tf.name_scope('dropout'):
     keep_prob = tf.placeholder(tf.float32)
     tf.scalar_summary('dropout_keep_probability', keep_prob)
-    dropped = tf.nn.dropout(hidden1, keep_prob)
+    dropped = tf.nn.dropout(hidden3, keep_prob)
 
-  y = nn_layer(dropped, 500, 10, 'layer2', act=tf.nn.softmax)
+    # altered
+  y = nn_layer(dropped, 100, 10, 'layer4', act=tf.nn.softmax)
 
   with tf.name_scope('cross_entropy'):
     diff = y_ * tf.log(y)

@@ -1,3 +1,5 @@
 /tmp/*
 /MNIST_data/*
 cudnn-70-linux-x64-v40
+.ipynb_checkpoint/*
+/StateFarm/*

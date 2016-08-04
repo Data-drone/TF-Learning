@@ -73,8 +73,12 @@ def conv_layer(input_tensor, patch_size = 5, channels = 1, output_dim, layer_nam
     tf.histogram_summary(layer_name + '/activations', activations)
     return activations
 
+# zero padding and max pooling layers
 def ZeroPadding():
     pass
 
-def MaxPooling():
-    pass
+def MaxPooling(data):
+    return tf.nn.max_pool(data,
+                          ksize=[1, 2, 2, 1],
+                          strides=[1, 2, 2, 1],
+                          padding='SAME' )
