@@ -56,7 +56,7 @@ def max_pool_2x2(x):
                         strides=[1, 2, 2, 1], padding='SAME')
 
 
-def conv_layer(input_tensor, patch_size = 5, channels = 1, output_dim, layer_name, act=tf.nn.relu):
+def conv_layer(input_tensor, output_dim, layer_name, patch_size = 5, channels = 1, act=tf.nn.relu):
   # the nn layer modified to be a convolution layer
   # assumes square patch size
   with tf.name_scope(layer_name):
@@ -76,9 +76,3 @@ def conv_layer(input_tensor, patch_size = 5, channels = 1, output_dim, layer_nam
 # zero padding and max pooling layers # fixed for this test
 def ZeroPadding(data, pad=[[1,1],[1,1]]):
     return tf.pad(data, paddings = pad, mode='constant')
-
-def MaxPooling(data):
-    return tf.nn.max_pool(data,
-                          ksize=[1, 2, 2, 1],
-                          strides=[1, 2, 2, 1],
-                          padding='SAME' )

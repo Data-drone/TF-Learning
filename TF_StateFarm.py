@@ -3,6 +3,7 @@ import glob
 import cv2
 import numpy as np
 import tensorflow as tf
+#from NN_Components import *
 
 NUM_CLASSES = 10
 IMAGE_SIZE = 224
@@ -57,7 +58,7 @@ train_target = np.array(train_target, dtype=np.uint8)
 train_data = train_data.reshape(-1, IMAGE_SIZE, IMAGE_SIZE, 1)
 train_target = to_categorical(train_target, NUM_CLASSES)
 
-train_data = train_data.astype('float32')
+#train_data = train_data.astype('float16')
 
 
 
