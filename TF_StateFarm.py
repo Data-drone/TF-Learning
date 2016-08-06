@@ -55,8 +55,7 @@ train_data = np.array(train_data, dtype=np.uint8)
 train_target = np.array(train_target, dtype=np.uint8)
 
 #train_data = train_data.reshape(train_data.shape[0], 1, IMAGE_SIZE, IMAGE_SIZE)
-train_data = train_data.reshape(-1, IMAGE_SIZE, IMAGE_SIZE, 1)
-train_target = to_categorical(train_target, NUM_CLASSES)
+
 
 #train_data = train_data.astype('float16')
 
