@@ -51,9 +51,9 @@ def conv2d(x, W, stride_size = 2, colors = 1):
   return tf.nn.conv2d(x, W, strides=[1, stride_size, stride_size, colors], padding='SAME')
 
 # standard max_pool function
-def max_pool_2x2(x, colours = 1 ):
-  return tf.nn.max_pool(x, ksize=[1, 2, 2, colours],
-                        strides=[1, 2, 2, colours], padding='SAME')
+def max_pool_2x2(x):
+  return tf.nn.max_pool(x, ksize=[1, 2, 2, 1],
+                        strides=[1, 2, 2, 1], padding='SAME')
 
 
 def conv_layer(input_tensor, output_dim, layer_name, patch_size = 5, channels = 1, act=tf.nn.relu):
